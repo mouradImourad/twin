@@ -5,8 +5,17 @@ repos:
       - id: ruff
         args: ["--fix"]
       - id: ruff-format
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: frontend-eslint
+        name: frontend eslint
+        entry: bash -lc "cd frontend && npm run lint"
+        language: system
+        files: ^frontend/.*\.(ts|tsx|js|jsx)$
